@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Bibliography section for the tutorial on real-time human pose estimation."
+    />
+    <title>Bibliography | Real-Time Human Pose Estimation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav container" aria-label="Main navigation">
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="how-it-works.html">How It Works</a>
+          <a href="systems.html">Systems</a>
+          <a href="comparison.html">Comparison</a>
+          <a href="exercise-analysis.html">Exercise Analysis</a>
+          <a href="challenges.html">Challenges</a>
+          <a href="future.html">Future</a>
+          <a href="bibliography.html">Bibliography</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container" style="padding: 4rem 0 5rem;">
+      <section aria-labelledby="page-title">
+        <h1 id="page-title">Annotated Bibliography</h1>
+        <p class="lead" style="max-width: 760px; margin-top: 1rem; color: #c7d6ea;">
+          The sources below support the technical concepts, systems, and exercise-analysis
+          applications discussed throughout the tutorial.
+        </p>
+
+        <section class="page-audio" aria-label="Page overview audio">
+          <div class="audio-label">Listen to Page Overview</div>
+          <audio controls preload="none">
+            <source src="audio/Bibliography (2).m4a" />
+            Your browser does not support the audio element.
+          </audio>
+        </section>
+
+        <div style="margin-top: 2rem; display: grid; gap: 1.25rem;">
+          <article id="ref1" class="card" style="padding: 1.4rem 1.5rem; border-radius: 18px; background: rgba(17, 30, 44, 0.72); border: 1px solid rgba(148, 163, 184, 0.22);">
+            <h2 style="font-size: 1.15rem; margin-bottom: 0.7rem;">[1] Miniar Ben Gamra and Moulay A. Akhloufi</h2>
+            <p style="margin: 0; color: #dfeaf8;">
+              “A Review of Deep Learning Techniques for 2D and 3D Human Pose Estimation.” <em>Image and Vision Computing</em>, Volume 114, 2021, Article 104282. DOI: 10.1016/j.imavis.2021.104282.
+            </p>
+            <p style="margin-top: 0.8rem;">
+              <a href="https://doi.org/10.1016/j.imavis.2021.104282" target="_blank" rel="noreferrer">Source link</a>
+            </p>
+            <p style="margin-top: 0.8rem; color: #9cb0c8;"><strong>Synopsis:</strong> This review surveys deep-learning approaches to both 2D and 3D human pose estimation, including different architectural categories and the challenges associated with single-person and multi-person pose estimation. It provides broad background for the tutorial's explanation of pose estimation and its major approaches.</p>
+          </article>
+
+          <article id="ref2" class="card" style="padding: 1.4rem 1.5rem; border-radius: 18px; background: rgba(17, 30, 44, 0.72); border: 1px solid rgba(148, 163, 184, 0.22);">
+            <h2 style="font-size: 1.15rem; margin-bottom: 0.7rem;">[2] Ivan Grishchenko, Valentin Bazarevsky, Andrei Zanfir, Eduard Gabriel Bazavan, Mihai Zanfir, Richard Yee, Karthik Raveendran, Matsvei Zhdanovich, Matthias Grundmann, and Cristian Sminchisescu</h2>
+            <p style="margin: 0; color: #dfeaf8;">
+              “BlazePose GHUM Holistic: Real-time 3D Human Landmarks and Pose Estimation.” 2022. arXiv:2206.11678.
+            </p>
+            <p style="margin-top: 0.8rem;">
+              <a href="https://arxiv.org/abs/2206.11678" target="_blank" rel="noreferrer">Source link</a>
+            </p>
+            <p style="margin-top: 0.8rem; color: #9cb0c8;"><strong>Synopsis:</strong> The paper presents BlazePose GHUM Holistic, a lightweight pipeline designed for real-time, on-device 3D human landmark and pose estimation from RGB imagery. The work specifically identifies fitness tracking among its applications and supports this tutorial's discussion of BlazePose for real-time exercise analysis.</p>
+          </article>
+
+          <article id="ref3" class="card" style="padding: 1.4rem 1.5rem; border-radius: 18px; background: rgba(17, 30, 44, 0.72); border: 1px solid rgba(148, 163, 184, 0.22);">
+            <h2 style="font-size: 1.15rem; margin-bottom: 0.7rem;">[3] Ultralytics</h2>
+            <p style="margin: 0; color: #dfeaf8;">
+              “Pose Estimation with Ultralytics YOLO.” <em>Ultralytics Documentation</em>.
+            </p>
+            <p style="margin-top: 0.8rem;">
+              <a href="https://docs.ultralytics.com/tasks/pose/" target="_blank" rel="noreferrer">Source link</a>
+            </p>
+            <p style="margin-top: 0.8rem; color: #9cb0c8;"><strong>Synopsis:</strong> The official documentation describes how Ultralytics YOLO performs pose estimation and exposes predicted keypoint coordinates. It documents access to pixel and normalized keypoint coordinates and the standard 17-keypoint COCO representation used by pretrained human pose models.</p>
+          </article>
+
+          <article id="ref4" class="card" style="padding: 1.4rem 1.5rem; border-radius: 18px; background: rgba(17, 30, 44, 0.72); border: 1px solid rgba(148, 163, 184, 0.22);">
+            <h2 style="font-size: 1.15rem; margin-bottom: 0.7rem;">[4] Zhe Cao, Tomas Simon, Shih-En Wei, and Yaser Sheikh</h2>
+            <p style="margin: 0; color: #dfeaf8;">
+              “Realtime Multi-Person 2D Pose Estimation Using Part Affinity Fields.” <em>Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)</em>, 2017. DOI: 10.1109/CVPR.2017.143.
+            </p>
+            <p style="margin-top: 0.8rem;">
+              <a href="https://openaccess.thecvf.com/content_cvpr_2017/html/Cao_Realtime_Multi-Person_2D_CVPR_2017_paper.html" target="_blank" rel="noreferrer">Source link</a>
+            </p>
+            <p style="margin-top: 0.8rem; color: #9cb0c8;"><strong>Synopsis:</strong> The paper introduces a bottom-up multi-person 2D pose-estimation method using Part Affinity Fields to associate detected body parts with individual people. It supports the tutorial's discussion of OpenPose and illustrates an approach that differs from single-person landmark pipelines.</p>
+          </article>
+
+          <article id="ref5" class="card" style="padding: 1.4rem 1.5rem; border-radius: 18px; background: rgba(17, 30, 44, 0.72); border: 1px solid rgba(148, 163, 184, 0.22);">
+            <h2 style="font-size: 1.15rem; margin-bottom: 0.7rem;">[5] Yu Cheng Hsu, Tsougenis Efstratios, and Kwok-Leung Tsui</h2>
+            <p style="margin: 0; color: #dfeaf8;">
+              “Viewpoint-invariant exercise repetition counting.” <em>Health Information Science and Systems</em>, Volume 12, Article 1, 2024. DOI: 10.1007/s13755-023-00258-3.
+            </p>
+            <p style="margin-top: 0.8rem;">
+              <a href="https://doi.org/10.1007/s13755-023-00258-3" target="_blank" rel="noreferrer">Source link</a>
+            </p>
+            <p style="margin-top: 0.8rem; color: #9cb0c8;"><strong>Synopsis:</strong> This research investigates vision-based exercise repetition counting using skeleton information obtained from pose estimation and considers challenges including different camera viewpoints and concurrent motions. It provides an application-focused source connecting pose-estimation output with exercise repetition counting.</p>
+          </article>
+        </div>
+
+        <div style="margin-top: 2rem; text-align: left;">
+          <a class="nav-button" href="index.html">Back to Tutorial</a>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

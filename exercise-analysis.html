@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Exercise analysis section for the tutorial on human pose estimation."
+    />
+    <title>Exercise Analysis | Real-Time Human Pose Estimation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav container" aria-label="Main navigation">
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="how-it-works.html">How It Works</a>
+          <a href="systems.html">Systems</a>
+          <a href="comparison.html">Comparison</a>
+          <a href="exercise-analysis.html">Exercise Analysis</a>
+          <a href="challenges.html">Challenges</a>
+          <a href="future.html">Future</a>
+          <a href="bibliography.html">Bibliography</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container" style="padding: 4rem 0 5rem;">
+      <article aria-labelledby="page-title">
+        <header style="margin-bottom: 2rem;">
+          <h1 id="page-title" style="margin: 0; font-size: clamp(2.4rem, 4vw, 3.5rem); line-height: 1.1; letter-spacing: -0.05em;">
+            Using Pose Estimation for Exercise Analysis
+          </h1>
+        </header>
+
+        <section class="page-audio" aria-label="Page overview audio">
+          <div class="audio-label">Listen to Page Overview</div>
+          <audio controls preload="none">
+            <source src="audio/Exercise%20Analysis.m4a" type="audio/mp4" />
+            Your browser does not support the audio element.
+          </audio>
+        </section>
+
+        <section aria-labelledby="intro" style="margin-bottom: 2.5rem;">
+          <div style="padding: 1.8rem; border: 1px solid rgba(148, 163, 184, 0.22); border-radius: 20px; background: rgba(17, 30, 44, 0.72); color: var(--muted);">
+            <p id="intro" style="margin: 0;">
+              In this chapter, the focus is on a single squat example using the hip, knee, and
+              ankle landmarks.
+            </p>
+          </div>
+        </section>
+
+        <section aria-labelledby="pipeline" style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(148, 163, 184, 0.18);">
+          <h2 id="pipeline" style="margin: 0 0 1.25rem; font-size: clamp(1.7rem, 3vw, 2.3rem); letter-spacing: -0.04em;">Pose-to-Exercise Pipeline</h2>
+          <div aria-label="Exercise analysis pipeline" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.75rem; padding: 1.5rem; border: 1px solid rgba(148, 163, 184, 0.22); border-radius: 20px; background: rgba(17, 30, 44, 0.72);">
+            <div style="min-width: 120px; padding: 0.9rem 1rem; border-radius: 12px; background: rgba(105, 210, 231, 0.08); border: 1px solid rgba(105, 210, 231, 0.32); text-align: center; font-weight: 600; color: #eaf7ff;">Video Frame</div>
+            <span aria-hidden="true" style="font-size: 1.5rem; color: var(--accent);">→</span>
+            <div style="min-width: 150px; padding: 0.9rem 1rem; border-radius: 12px; background: rgba(105, 210, 231, 0.08); border: 1px solid rgba(105, 210, 231, 0.32); text-align: center; font-weight: 600; color: #eaf7ff;">Pose Landmarks</div>
+            <span aria-hidden="true" style="font-size: 1.5rem; color: var(--accent);">→</span>
+            <div style="min-width: 150px; padding: 0.9rem 1rem; border-radius: 12px; background: rgba(105, 210, 231, 0.08); border: 1px solid rgba(105, 210, 231, 0.32); text-align: center; font-weight: 600; color: #eaf7ff;">Select Hip, Knee &amp; Ankle</div>
+            <span aria-hidden="true" style="font-size: 1.5rem; color: var(--accent);">→</span>
+            <div style="min-width: 150px; padding: 0.9rem 1rem; border-radius: 12px; background: rgba(105, 210, 231, 0.08); border: 1px solid rgba(105, 210, 231, 0.32); text-align: center; font-weight: 600; color: #eaf7ff;">Calculate Knee Angle</div>
+            <span aria-hidden="true" style="font-size: 1.5rem; color: var(--accent);">→</span>
+            <div style="min-width: 170px; padding: 0.9rem 1rem; border-radius: 12px; background: rgba(105, 210, 231, 0.08); border: 1px solid rgba(105, 210, 231, 0.32); text-align: center; font-weight: 600; color: #eaf7ff;">Determine Movement State</div>
+            <span aria-hidden="true" style="font-size: 1.5rem; color: var(--accent);">→</span>
+            <div style="min-width: 150px; padding: 0.9rem 1rem; border-radius: 12px; background: rgba(105, 210, 231, 0.08); border: 1px solid rgba(105, 210, 231, 0.32); text-align: center; font-weight: 600; color: #eaf7ff;">Count Repetition</div>
+          </div>
+        </section>
+
+        <section aria-labelledby="joint-angle" style="margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid rgba(148, 163, 184, 0.18);">
+          <h2 id="joint-angle" style="margin: 0 0 1.25rem; font-size: clamp(1.7rem, 3vw, 2.3rem); letter-spacing: -0.04em;">Calculating a Joint Angle</h2>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: stretch;">
+            <div style="padding: 1.5rem; border: 1px solid rgba(148, 163, 184, 0.22); border-radius: 20px; background: rgba(17, 30, 44, 0.72); color: var(--muted);">
+              <p>
+                The knee is treated as the vertex of an angle formed by the hip, knee, and ankle
+                landmarks. Let A = hip, B = knee, and C = ankle.
+              </p>
+              <p style="margin: 1rem 0 0; color: #eaf7ff; font-size: 1.08rem; line-height: 1.7;">
+                θ = arccos(((A − B) · (C − B)) / (||A − B|| ||C − B||))
+              </p>
+              <p>
+                The vectors from the knee toward the hip and ankle are compared with the dot
+                product to estimate the angle between them.
+              </p>
+            </div>
+            <figure style="margin: 0; padding: 1.25rem; border: 1px solid rgba(148, 163, 184, 0.22); border-radius: 20px; background: rgba(17, 30, 44, 0.72);">
+              <div style="display: grid; place-items: center; min-height: 240px; border-radius: 16px; border: 1px dashed rgba(105, 210, 231, 0.35); background: rgba(105, 210, 231, 0.04); color: #dfeefb;">
+                <svg viewBox="0 0 220 180" width="220" height="180" aria-label="Joint angle diagram" role="img" style="display: block; overflow: visible;">
+                  <g fill="none" stroke="#8ad7ff" stroke-width="2" stroke-linecap="round">
+                    <line x1="50" y1="58" x2="108" y2="95" />
+                    <line x1="108" y1="95" x2="165" y2="126" />
+                    <path d="M 108 95 A 30 30 0 0 1 80 120" />
+                  </g>
+                  <g>
+                    <circle cx="50" cy="58" r="5" fill="#dff6ff" />
+                    <circle cx="108" cy="95" r="5" fill="#dff6ff" />
+                    <circle cx="165" cy="126" r="5" fill="#dff6ff" />
+                  </g>
+                  <g fill="#eaf7ff" font-size="12" font-family="Inter, sans-serif" font-weight="500">
+                    <text x="12" y="45">Hip (A)</text>
+                    <text x="96" y="78">Knee (B)</text>
+                    <text x="150" y="146">Ankle (C)</text>
+                    <text x="86" y="108" font-size="13">θ</text>
+                  </g>
+                </svg>
+              </div>
+            </figure>
+          </div>
+        </section>
+
+        <section aria-labelledby="movement-state" style="margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid rgba(148, 163, 184, 0.18);">
+          <h2 id="movement-state" style="margin: 0 0 1.25rem; font-size: clamp(1.7rem, 3vw, 2.3rem); letter-spacing: -0.04em;">From Angle to Movement State</h2>
+          <div style="padding: 1.5rem; border: 1px solid rgba(148, 163, 184, 0.22); border-radius: 20px; background: rgba(17, 30, 44, 0.72); color: var(--muted);">
+            <p>
+              A relatively straight leg produces a larger knee angle, while bending into a squat
+              decreases that angle. An application can therefore define movement states such as
+              Standing → Lowering/Bottom → Standing and count a repetition when a full cycle is
+              complete. Pose-estimation skeleton data has also been studied as input for
+              vision-based exercise repetition-counting methods.<a href="bibliography.html#ref5" aria-label="Reference 5">[5]</a>
+            </p>
+            <p>
+              Any numerical angle thresholds would need to be chosen and validated for the
+              specific application, camera setup, and exercise. There is no universal “correct
+              squat” threshold that applies in every case.
+            </p>
+          </div>
+        </section>
+
+        <section aria-labelledby="example-algorithm" style="margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid rgba(148, 163, 184, 0.18);">
+          <h2 id="example-algorithm" style="margin: 0 0 1.25rem; font-size: clamp(1.7rem, 3vw, 2.3rem); letter-spacing: -0.04em;">Example Algorithm</h2>
+          <div style="padding: 1.5rem; border: 1px solid rgba(148, 163, 184, 0.22); border-radius: 20px; background: rgba(17, 30, 44, 0.72); color: var(--muted);">
+            <pre style="margin: 0; overflow-x: auto; white-space: pre-wrap; color: #dfeefb; font-family: Consolas, 'SFMono-Regular', monospace; font-size: 0.9rem; line-height: 1.7;">import numpy as np
+
+def calculate_angle(a, b, c):
+    a = np.array(a)
+    b = np.array(b)
+    c = np.array(c)
+    ba = a - b
+    bc = c - b
+    cosine_angle = np.dot(ba, bc) / (
+        np.linalg.norm(ba) * np.linalg.norm(bc)
+    )
+    cosine_angle = np.clip(cosine_angle, -1.0, 1.0)
+    angle = np.arccos(cosine_angle)
+    return np.degrees(angle)
+</pre>
+            <p style="margin-top: 1.25rem; margin-bottom: 0;">
+              The function first converts landmark coordinates into vectors by subtracting the
+              knee position from the hip and ankle positions. It then computes the dot product of
+              the two vectors, normalizes by their magnitudes, and applies arccos to recover the
+              angle between them. Finally, the result is converted from radians to degrees. The
+              np.clip step prevents small floating-point errors from pushing the cosine value
+              outside the valid range for arccos.
+            </p>
+          </div>
+        </section>
+
+        <section aria-labelledby="final" style="margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid rgba(148, 163, 184, 0.18);">
+          <h2 id="final" style="margin: 0 0 1.25rem; font-size: clamp(1.7rem, 3vw, 2.3rem); letter-spacing: -0.04em;">Pose Estimation Is Only the First Step</h2>
+          <div style="padding: 1.5rem; border: 1px solid rgba(148, 163, 184, 0.22); border-radius: 20px; background: rgba(17, 30, 44, 0.72); color: var(--muted);">
+            <p style="margin: 0;">
+              Pose estimation supplies the landmark coordinates; joint-angle calculation,
+              movement-state logic, repetition counting, and form-analysis rules are downstream
+              application logic.<a href="bibliography.html#ref2" aria-label="Reference 2">[2]</a>
+            </p>
+          </div>
+        </section>
+      </article>
+    </main>
+  </body>
+</html>

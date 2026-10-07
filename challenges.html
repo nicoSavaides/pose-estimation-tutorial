@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Challenges section for the tutorial on human pose estimation."
+    />
+    <title>Challenges | Real-Time Human Pose Estimation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav container" aria-label="Main navigation">
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="how-it-works.html">How It Works</a>
+          <a href="systems.html">Systems</a>
+          <a href="comparison.html">Comparison</a>
+          <a href="exercise-analysis.html">Exercise Analysis</a>
+          <a href="challenges.html">Challenges</a>
+          <a href="future.html">Future</a>
+          <a href="bibliography.html">Bibliography</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container" style="padding: 4rem 0 5rem;">
+      <section aria-labelledby="page-title">
+        <h1 id="page-title">Challenges and Limitations</h1>
+        <p class="lead" style="max-width: 760px; margin-top: 1rem; color: #c7d6ea;">
+          Pose-estimation accuracy can depend strongly on the visual conditions under which a
+          person is observed. Even a capable model can produce less reliable landmark estimates
+          when the scene is difficult to interpret.
+        </p>
+
+        <section class="page-audio" aria-label="Page overview audio">
+          <div class="audio-label">Listen to Page Overview</div>
+          <audio controls preload="none">
+            <source src="audio/Challenges.m4a" type="audio/mp4" />
+            Your browser does not support the audio element.
+          </audio>
+        </section>
+
+        <div class="card-grid" style="margin-top: 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem;">
+          <article class="card" style="padding: 1.3rem; border-radius: 18px; background: rgba(17, 30, 44, 0.72); border: 1px solid rgba(148, 163, 184, 0.22);">
+            <h2 style="font-size: 1.1rem; margin-bottom: 0.65rem;">Occlusion</h2>
+            <p style="margin: 0; color: #9cb0c8;">
+              Body landmarks may become difficult to estimate when a limb is hidden behind another body part, object, or person.
+            </p>
+          </article>
+
+          <article class="card" style="padding: 1.3rem; border-radius: 18px; background: rgba(17, 30, 44, 0.72); border: 1px solid rgba(148, 163, 184, 0.22);">
+            <h2 style="font-size: 1.1rem; margin-bottom: 0.65rem;">Camera Angle</h2>
+            <p style="margin: 0; color: #9cb0c8;">
+              A movement viewed from different angles can change how joint positions appear in the 2D image and can affect measurements derived from those coordinates.
+            </p>
+          </article>
+
+          <article class="card" style="padding: 1.3rem; border-radius: 18px; background: rgba(17, 30, 44, 0.72); border: 1px solid rgba(148, 163, 184, 0.22);">
+            <h2 style="font-size: 1.1rem; margin-bottom: 0.65rem;">Lighting and Background</h2>
+            <p style="margin: 0; color: #9cb0c8;">
+              Poor lighting, low contrast, or visually complex backgrounds can make reliable visual detection more difficult.
+            </p>
+          </article>
+
+          <article class="card" style="padding: 1.3rem; border-radius: 18px; background: rgba(17, 30, 44, 0.72); border: 1px solid rgba(148, 163, 184, 0.22);">
+            <h2 style="font-size: 1.1rem; margin-bottom: 0.65rem;">Fast Movement</h2>
+            <p style="margin: 0; color: #9cb0c8;">
+              Rapid movement can introduce motion blur and make landmark positions less stable between video frames.
+            </p>
+          </article>
+
+          <article class="card" style="padding: 1.3rem; border-radius: 18px; background: rgba(17, 30, 44, 0.72); border: 1px solid rgba(148, 163, 184, 0.22);">
+            <h2 style="font-size: 1.1rem; margin-bottom: 0.65rem;">Exercise and Body Position</h2>
+            <p style="margin: 0; color: #9cb0c8;">
+              Unusual poses, self-occlusion, or positions that differ substantially from examples represented during model development can make pose estimation more difficult.
+            </p>
+          </article>
+        </div>
+
+      </section>
+    </main>
+  </body>
+</html>

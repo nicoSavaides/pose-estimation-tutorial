@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Future directions section for the tutorial on real-time human pose estimation."
+    />
+    <title>Future Directions | Real-Time Human Pose Estimation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav container" aria-label="Main navigation">
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="how-it-works.html">How It Works</a>
+          <a href="systems.html">Systems</a>
+          <a href="comparison.html">Comparison</a>
+          <a href="exercise-analysis.html">Exercise Analysis</a>
+          <a href="challenges.html">Challenges</a>
+          <a href="future.html">Future</a>
+          <a href="bibliography.html">Bibliography</a>
+        </div>
+      </nav>
+    </header>
+
+    <style>
+      .quiz-question.correct {
+        border-color: rgba(110, 231, 183, 0.8);
+        background: rgba(10, 41, 29, 0.9);
+      }
+
+      .quiz-question.incorrect {
+        border-color: rgba(248, 113, 113, 0.8);
+        background: rgba(44, 19, 21, 0.9);
+      }
+
+      .quiz-feedback strong {
+        color: #eaf7ff;
+      }
+    </style>
+
+    <main class="container" style="padding: 4rem 0 5rem;">
+      <section aria-labelledby="page-title">
+        <h1 id="page-title">Future Developments and Conclusion</h1>
+
+        <section class="page-audio" aria-label="Page overview audio">
+          <div class="audio-label">Listen to Page Overview</div>
+          <audio controls preload="none">
+            <source src="audio/Future.m4a" type="audio/mp4" />
+            Your browser does not support the audio element.
+          </audio>
+        </section>
+
+        <section aria-labelledby="future-heading" style="margin-top: 1.5rem;">
+          <h2 id="future-heading" style="margin-bottom: 1rem;">Where Pose Estimation Is Going</h2>
+          <div class="card-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem;">
+            <article class="card" style="padding: 1.3rem; border-radius: 18px; background: rgba(17, 30, 44, 0.72); border: 1px solid rgba(148, 163, 184, 0.22);">
+              <h3 style="font-size: 1.1rem; margin-bottom: 0.65rem;">More Robust Real-Time Estimation</h3>
+              <p style="margin: 0; color: #9cb0c8;">
+                Future systems can continue improving landmark stability under challenging conditions such as occlusion, unusual viewpoints, and fast movement.
+              </p>
+            </article>
+
+            <article class="card" style="padding: 1.3rem; border-radius: 18px; background: rgba(17, 30, 44, 0.72); border: 1px solid rgba(148, 163, 184, 0.22);">
+              <h3 style="font-size: 1.1rem; margin-bottom: 0.65rem;">Richer 3D Understanding</h3>
+              <p style="margin: 0; color: #9cb0c8;">
+                Improved 3D pose estimation can provide more information about how the body moves through space rather than relying only on positions projected into a 2D image.
+              </p>
+            </article>
+
+            <article class="card" style="padding: 1.3rem; border-radius: 18px; background: rgba(17, 30, 44, 0.72); border: 1px solid rgba(148, 163, 184, 0.22);">
+              <h3 style="font-size: 1.1rem; margin-bottom: 0.65rem;">Exercise, Sports, and Rehabilitation</h3>
+              <p style="margin: 0; color: #9cb0c8;">
+                Pose estimation can support applications that analyze human movement, including fitness, sports analysis, and rehabilitation-related tools. It does not replace professional assessment.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section aria-labelledby="conclusion-heading" style="margin-top: 2rem;">
+          <h2 id="conclusion-heading">Conclusion</h2>
+          <p class="lead" style="margin-top: 0.7rem; color: #c7d6ea;">
+            Human pose estimation converts images or video into body landmarks. These landmarks
+            provide a structured representation of the body that downstream algorithms can use.
+          </p>
+          <p style="color: #9cb0c8; margin-top: 1rem;">
+            Different systems such as BlazePose, YOLO Pose, and OpenPose use different
+            approaches and are suited to different application requirements. In practice, the
+            right choice depends on whether the goal is low-latency tracking, high-detail body
+            keypoints, or a different balance of speed and flexibility.
+          </p>
+          <p style="color: #9cb0c8; margin-top: 1rem;">
+            For exercise analysis, landmarks can be converted into measurements such as joint
+            angles and movement states. The squat example showed how hip, knee, and ankle
+            coordinates can be turned into a knee-angle calculation and used as part of a
+            repetition-counting workflow.
+          </p>
+          <p style="color: #9cb0c8; margin-top: 1rem;">
+            Real-world performance remains affected by camera angle, occlusion, lighting, motion,
+            and other capture conditions. When those factors vary, the estimated landmarks should
+            be treated as approximate measurements rather than perfect body positions.
+          </p>
+        </section>
+
+        <section aria-labelledby="quiz-title" style="margin-top: 2rem; padding: 1.5rem; border: 1px solid rgba(148, 163, 184, 0.22); border-radius: 20px; background: rgba(17, 30, 44, 0.72);">
+          <h2 id="quiz-title" style="margin: 0 0 1rem;">Check Your Understanding</h2>
+          <div id="quiz" style="display: grid; gap: 1rem; color: #dfeaf8;">
+            <div class="quiz-question" data-answer="B" style="padding: 1rem; border: 1px solid rgba(148, 163, 184, 0.2); border-radius: 14px; background: rgba(15, 23, 42, 0.7);">
+              <p style="margin: 0 0 0.65rem; font-weight: 600;">1. What does a human pose-estimation system primarily produce?</p>
+              <label style="display: block; margin: 0.35rem 0;"><input type="radio" name="q1" value="A" /> A. Audio features</label>
+              <label style="display: block; margin: 0.35rem 0;"><input type="radio" name="q1" value="B" /> B. Body landmarks or keypoints</label>
+              <label style="display: block; margin: 0.35rem 0;"><input type="radio" name="q1" value="C" /> C. Exercise names</label>
+              <label style="display: block; margin: 0.35rem 0;"><input type="radio" name="q1" value="D" /> D. Medical diagnoses</label>
+              <div class="quiz-feedback" aria-live="polite" style="margin-top: 0.75rem; min-height: 1.2rem; color: #c7d6ea;"></div>
+            </div>
+
+            <div class="quiz-question" data-answer="C" style="padding: 1rem; border: 1px solid rgba(148, 163, 184, 0.2); border-radius: 14px; background: rgba(15, 23, 42, 0.7);">
+              <p style="margin: 0 0 0.65rem; font-weight: 600;">2. Which system discussed in this tutorial uses Part Affinity Fields for multi-person pose estimation?</p>
+              <label style="display: block; margin: 0.35rem 0;"><input type="radio" name="q2" value="A" /> A. BlazePose</label>
+              <label style="display: block; margin: 0.35rem 0;"><input type="radio" name="q2" value="B" /> B. YOLO Pose</label>
+              <label style="display: block; margin: 0.35rem 0;"><input type="radio" name="q2" value="C" /> C. OpenPose</label>
+              <label style="display: block; margin: 0.35rem 0;"><input type="radio" name="q2" value="D" /> D. NumPy</label>
+              <div class="quiz-feedback" aria-live="polite" style="margin-top: 0.75rem; min-height: 1.2rem; color: #c7d6ea;"></div>
+            </div>
+
+            <div class="quiz-question" data-answer="B" style="padding: 1rem; border: 1px solid rgba(148, 163, 184, 0.2); border-radius: 14px; background: rgba(15, 23, 42, 0.7);">
+              <p style="margin: 0 0 0.65rem; font-weight: 600;">3. In the squat example, which three landmarks are used to calculate the knee angle?</p>
+              <label style="display: block; margin: 0.35rem 0;"><input type="radio" name="q3" value="A" /> A. Shoulder, elbow, wrist</label>
+              <label style="display: block; margin: 0.35rem 0;"><input type="radio" name="q3" value="B" /> B. Hip, knee, ankle</label>
+              <label style="display: block; margin: 0.35rem 0;"><input type="radio" name="q3" value="C" /> C. Eye, shoulder, hip</label>
+              <label style="display: block; margin: 0.35rem 0;"><input type="radio" name="q3" value="D" /> D. Knee, ankle, toe</label>
+              <div class="quiz-feedback" aria-live="polite" style="margin-top: 0.75rem; min-height: 1.2rem; color: #c7d6ea;"></div>
+            </div>
+
+            <div class="quiz-question" data-answer="A" style="padding: 1rem; border: 1px solid rgba(148, 163, 184, 0.2); border-radius: 14px; background: rgba(15, 23, 42, 0.7);">
+              <p style="margin: 0 0 0.65rem; font-weight: 600;">4. Why can camera viewpoint affect exercise analysis based on 2D pose estimation?</p>
+              <label style="display: block; margin: 0.35rem 0;"><input type="radio" name="q4" value="A" /> A. It can change how body geometry appears when projected into the image</label>
+              <label style="display: block; margin: 0.35rem 0;"><input type="radio" name="q4" value="B" /> B. It changes the person's actual anatomy</label>
+              <label style="display: block; margin: 0.35rem 0;"><input type="radio" name="q4" value="C" /> C. Pose estimation only works from overhead cameras</label>
+              <label style="display: block; margin: 0.35rem 0;"><input type="radio" name="q4" value="D" /> D. It prevents video from containing frames</label>
+              <div class="quiz-feedback" aria-live="polite" style="margin-top: 0.75rem; min-height: 1.2rem; color: #c7d6ea;"></div>
+            </div>
+          </div>
+
+          <div id="quiz-result" style="margin-top: 1rem; font-weight: 700; color: #eaf7ff; display: none;"></div>
+
+          <div style="margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.75rem;">
+            <button id="check-answers" type="button" class="nav-button" style="border: none; cursor: pointer;">Check Answers</button>
+            <button id="try-again" type="button" class="nav-button" style="border: none; cursor: pointer; background: rgba(105, 210, 231, 0.09); color: #dfeaf8;">Try Again</button>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script>
+      const quizQuestions = document.querySelectorAll('.quiz-question');
+      const resultBox = document.getElementById('quiz-result');
+      const checkButton = document.getElementById('check-answers');
+      const tryAgainButton = document.getElementById('try-again');
+
+      const answerMap = {
+        q1: 'B',
+        q2: 'C',
+        q3: 'B',
+        q4: 'A'
+      };
+
+      const answerText = {
+        A: 'A',
+        B: 'B',
+        C: 'C',
+        D: 'D'
+      };
+
+      function evaluateQuiz() {
+        let score = 0;
+
+        quizQuestions.forEach((question) => {
+          const name = question.querySelector('input').name;
+          const selected = question.querySelector('input:checked');
+          const correct = answerMap[name];
+          const feedback = question.querySelector('.quiz-feedback');
+
+          question.classList.remove('correct', 'incorrect');
+
+          if (selected && selected.value === correct) {
+            score += 1;
+            question.classList.add('correct');
+            feedback.innerHTML = '<strong>Correct.</strong>';
+          } else {
+            question.classList.add('incorrect');
+            feedback.innerHTML = '<strong>Incorrect.</strong> Correct answer: ' + answerText[correct] + '.';
+          }
+        });
+
+        resultBox.style.display = 'block';
+        resultBox.textContent = 'Score: ' + score + ' / 4';
+      }
+
+      function resetQuiz() {
+        quizQuestions.forEach((question) => {
+          question.classList.remove('correct', 'incorrect');
+          const inputs = question.querySelectorAll('input');
+          inputs.forEach((input) => {
+            input.checked = false;
+          });
+          const feedback = question.querySelector('.quiz-feedback');
+          feedback.textContent = '';
+        });
+
+        resultBox.style.display = 'none';
+        resultBox.textContent = '';
+      }
+
+      checkButton.addEventListener('click', evaluateQuiz);
+      tryAgainButton.addEventListener('click', resetQuiz);
+    </script>
+  </body>
+</html>

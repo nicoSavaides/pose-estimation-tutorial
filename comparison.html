@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Comparison section for the tutorial on pose estimation systems."
+    />
+    <title>Comparison | Real-Time Human Pose Estimation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav container" aria-label="Main navigation">
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="how-it-works.html">How It Works</a>
+          <a href="systems.html">Systems</a>
+          <a href="comparison.html">Comparison</a>
+          <a href="exercise-analysis.html">Exercise Analysis</a>
+          <a href="challenges.html">Challenges</a>
+          <a href="future.html">Future</a>
+          <a href="bibliography.html">Bibliography</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container" style="padding: 4rem 0 5rem;">
+      <article aria-labelledby="page-title">
+        <header style="margin-bottom: 2rem;">
+          <h1 id="page-title" style="margin: 0; font-size: clamp(2.4rem, 4vw, 3.5rem); line-height: 1.1; letter-spacing: -0.05em;">
+            Comparing Pose Estimation for Exercise Analysis
+          </h1>
+        </header>
+
+        <section class="page-audio" aria-label="Page overview audio">
+          <div class="audio-label">Listen to Page Overview</div>
+          <audio controls preload="none">
+            <source src="audio/Comparison.m4a" type="audio/mp4" />
+            Your browser does not support the audio element.
+          </audio>
+        </section>
+
+        <section aria-labelledby="intro" style="margin-bottom: 2.5rem;">
+          <div style="padding: 1.8rem; border: 1px solid rgba(148, 163, 184, 0.22); border-radius: 20px; background: rgba(17, 30, 44, 0.72); color: var(--muted);">
+            <p id="intro" style="margin: 0;">
+              Pose-estimation systems should be evaluated based on the needs of the
+              application. For exercise analysis, the most relevant considerations are landmark
+              representation, real-time processing, deployment environment, and the type of
+              movement being analyzed.
+            </p>
+          </div>
+        </section>
+
+        <section aria-labelledby="comparison-table" style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(148, 163, 184, 0.18);">
+          <h2 id="comparison-table" style="margin: 0 0 1.25rem; font-size: clamp(1.7rem, 3vw, 2.3rem); letter-spacing: -0.04em;">System Comparison</h2>
+
+          <div style="overflow-x: auto; border: 1px solid rgba(148, 163, 184, 0.22); border-radius: 20px; background: rgba(17, 30, 44, 0.72);">
+            <table style="width: 100%; border-collapse: collapse; min-width: 760px; color: var(--muted);">
+              <thead>
+                <tr style="background: rgba(105, 210, 231, 0.05);">
+                  <th style="padding: 1rem; text-align: left; font-size: 0.88rem; letter-spacing: 0.09em; text-transform: uppercase; color: #eaf7ff; border-bottom: 1px solid rgba(148, 163, 184, 0.2);">System</th>
+                  <th style="padding: 1rem; text-align: left; font-size: 0.88rem; letter-spacing: 0.09em; text-transform: uppercase; color: #eaf7ff; border-bottom: 1px solid rgba(148, 163, 184, 0.2);">Approach</th>
+                  <th style="padding: 1rem; text-align: left; font-size: 0.88rem; letter-spacing: 0.09em; text-transform: uppercase; color: #eaf7ff; border-bottom: 1px solid rgba(148, 163, 184, 0.2);">Landmark representation</th>
+                  <th style="padding: 1rem; text-align: left; font-size: 0.88rem; letter-spacing: 0.09em; text-transform: uppercase; color: #eaf7ff; border-bottom: 1px solid rgba(148, 163, 184, 0.2);">2D / 3D capabilities discussed</th>
+                  <th style="padding: 1rem; text-align: left; font-size: 0.88rem; letter-spacing: 0.09em; text-transform: uppercase; color: #eaf7ff; border-bottom: 1px solid rgba(148, 163, 184, 0.2);">Multi-person handling</th>
+                  <th style="padding: 1rem; text-align: left; font-size: 0.88rem; letter-spacing: 0.09em; text-transform: uppercase; color: #eaf7ff; border-bottom: 1px solid rgba(148, 163, 184, 0.2);">Deployment considerations</th>
+                  <th style="padding: 1rem; text-align: left; font-size: 0.88rem; letter-spacing: 0.09em; text-transform: uppercase; color: #eaf7ff; border-bottom: 1px solid rgba(148, 163, 184, 0.2);">Exercise-analysis relevance</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding: 1rem; border-bottom: 1px solid rgba(148, 163, 184, 0.16); color: #eaf7ff; font-weight: 600;">MediaPipe / BlazePose</td>
+                  <td style="padding: 1rem; border-bottom: 1px solid rgba(148, 163, 184, 0.16);">Lightweight real-time landmark pipeline for on-device use</td>
+                  <td style="padding: 1rem; border-bottom: 1px solid rgba(148, 163, 184, 0.16);">33 body landmarks, including shoulders, elbows, wrists, hips, knees, ankles, heels, and foot landmarks<a href="bibliography.html#ref2" aria-label="Reference 2">[2]</a></td>
+                  <td style="padding: 1rem; border-bottom: 1px solid rgba(148, 163, 184, 0.16);">3D human landmark estimation from RGB imagery is a major focus of the discussion in this tutorial<a href="bibliography.html#ref2" aria-label="Reference 2">[2]</a></td>
+                  <td style="padding: 1rem; border-bottom: 1px solid rgba(148, 163, 184, 0.16);">Designed for practical single-person or small-scale real-time tracking scenarios</td>
+                  <td style="padding: 1rem; border-bottom: 1px solid rgba(148, 163, 184, 0.16);">Strong fit for mobile, on-device, and lightweight interactive applications</td>
+                  <td style="padding: 1rem; border-bottom: 1px solid rgba(148, 163, 184, 0.16);">Highly relevant for fitness tracking and continuous movement analysis</td>
+                </tr>
+                <tr>
+                  <td style="padding: 1rem; border-bottom: 1px solid rgba(148, 163, 184, 0.16); color: #eaf7ff; font-weight: 600;">YOLO Pose</td>
+                  <td style="padding: 1rem; border-bottom: 1px solid rgba(148, 163, 184, 0.16);">Detection-driven pose estimation within the YOLO ecosystem</td>
+                  <td style="padding: 1rem; border-bottom: 1px solid rgba(148, 163, 184, 0.16);">COCO-style 17 keypoints including nose, shoulders, elbows, wrists, hips, knees, and ankles<a href="bibliography.html#ref3" aria-label="Reference 3">[3]</a></td>
+                  <td style="padding: 1rem; border-bottom: 1px solid rgba(148, 163, 184, 0.16);">Primarily discussed in the tutorial as image-coordinate prediction with optional visibility/confidence information<a href="bibliography.html#ref3" aria-label="Reference 3">[3]</a></td>
+                  <td style="padding: 1rem; border-bottom: 1px solid rgba(148, 163, 184, 0.16);">Per-instance detection and keypoint outputs support detection-based multi-object pipelines</td>
+                  <td style="padding: 1rem; border-bottom: 1px solid rgba(148, 163, 184, 0.16);">Well suited when pose estimation is integrated into a broader YOLO-based vision workflow</td>
+                  <td style="padding: 1rem; border-bottom: 1px solid rgba(148, 163, 184, 0.16);">Useful when the application already depends on the YOLO ecosystem or needs instance-level detection data</td>
+                </tr>
+                <tr>
+                  <td style="padding: 1rem; color: #eaf7ff; font-weight: 600;">OpenPose</td>
+                  <td style="padding: 1rem;">Bottom-up, multi-person 2D pose-estimation approach</td>
+                  <td style="padding: 1rem;">Body-part detections assembled into human skeletons using part associations<a href="bibliography.html#ref4" aria-label="Reference 4">[4]</a></td>
+                  <td style="padding: 1rem;">Primarily a 2D approach in the context of this tutorial<a href="bibliography.html#ref4" aria-label="Reference 4">[4]</a></td>
+                  <td style="padding: 1rem;">Strongly designed for multi-person scenes because it must associate body parts with individuals</td>
+                  <td style="padding: 1rem;">Useful for scenes involving several people or highly crowded environments</td>
+                  <td style="padding: 1rem;">Relevant when the exercise analysis task must separate multiple people or work in a group setting</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section aria-labelledby="landmarks-exercise-analysis" style="margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid rgba(148, 163, 184, 0.18);">
+          <h2 id="landmarks-exercise-analysis" style="margin: 0 0 1.25rem; font-size: clamp(1.7rem, 3vw, 2.3rem); letter-spacing: -0.04em;">Landmarks and Exercise Analysis</h2>
+          <div style="padding: 1.5rem; border: 1px solid rgba(148, 163, 184, 0.22); border-radius: 20px; background: rgba(17, 30, 44, 0.72); color: var(--muted);">
+            <p>
+              Landmark count alone does not determine whether a model is better for exercise
+              analysis. What matters is whether the model provides the anatomical landmarks
+              required by the application.
+            </p>
+            <p>
+              For a squat, the hip, knee, and ankle landmarks are enough to calculate a knee
+              angle, which can be used to understand movement phase and repetition patterns.
+              Other exercises or more detailed biomechanical analysis may need additional
+              landmarks or spatial information.
+            </p>
+          </div>
+        </section>
+
+        <section aria-labelledby="real-time-processing" style="margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid rgba(148, 163, 184, 0.18);">
+          <h2 id="real-time-processing" style="margin: 0 0 1.25rem; font-size: clamp(1.7rem, 3vw, 2.3rem); letter-spacing: -0.04em;">Real-Time Processing</h2>
+          <div style="padding: 1.5rem; border: 1px solid rgba(148, 163, 184, 0.22); border-radius: 20px; background: rgba(17, 30, 44, 0.72); color: var(--muted);">
+            <p>
+              An exercise-analysis application typically processes a continuous stream of
+              frames while keeping landmark estimates stable enough for downstream calculations.
+              This makes temporal continuity and computational cost important practical
+              considerations.
+            </p>
+            <p>
+              In general, there is a tradeoff between computational cost and the amount of pose
+              information produced. The choice of system depends on whether the application
+              prioritizes lightweight tracking, richer structure, or multi-person assignment.
+            </p>
+          </div>
+        </section>
+
+        <section aria-labelledby="single-vs-multi" style="margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid rgba(148, 163, 184, 0.18);">
+          <h2 id="single-vs-multi" style="margin: 0 0 1.25rem; font-size: clamp(1.7rem, 3vw, 2.3rem); letter-spacing: -0.04em;">Single-Person vs. Multi-Person Scenarios</h2>
+          <div style="padding: 1.5rem; border: 1px solid rgba(148, 163, 184, 0.22); border-radius: 20px; background: rgba(17, 30, 44, 0.72); color: var(--muted);">
+            <p>
+              A home workout application may mainly need to follow one person in a fixed field of
+              view. In that case, the main requirement is often accurate tracking of a single
+              individual over time.
+            </p>
+            <p>
+              A gym, sports, or group-training environment may require distinguishing multiple
+              people and assigning the correct keypoints to each person. This creates different
+              design priorities and helps explain why some systems emphasize lightweight
+              single-person tracking while others are built around multi-person association.
+            </p>
+          </div>
+        </section>
+
+        <section aria-labelledby="which-approach-fits" style="margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid rgba(148, 163, 184, 0.18);">
+          <h2 id="which-approach-fits" style="margin: 0 0 1.25rem; font-size: clamp(1.7rem, 3vw, 2.3rem); letter-spacing: -0.04em;">Which Approach Fits This Tutorial?</h2>
+          <div style="padding: 1.5rem; border: 1px solid rgba(148, 163, 184, 0.22); border-radius: 20px; background: rgba(17, 30, 44, 0.72); color: var(--muted);">
+            <p>
+              For the squat-analysis example developed later in this tutorial, MediaPipe /
+              BlazePose is a natural fit because it emphasizes real-time body landmarks and
+              on-device applications.<a href="bibliography.html#ref2" aria-label="Reference 2">[2]</a>
+            </p>
+            <p>
+              However, this does not make it universally superior. YOLO Pose can be useful when
+              pose estimation is integrated with a broader YOLO-based vision pipeline,<a href="bibliography.html#ref3" aria-label="Reference 3">[3]</a>
+              while OpenPose illustrates a strong multi-person bottom-up strategy for scenes that
+              require person association.<a href="bibliography.html#ref4" aria-label="Reference 4">[4]</a>
+            </p>
+          </div>
+        </section>
+
+        <section aria-labelledby="key-takeaway" style="margin-top: 2.5rem;">
+          <div style="padding: 1.8rem; border: 1px solid rgba(105, 210, 231, 0.38); border-radius: 20px; background: linear-gradient(135deg, rgba(105, 210, 231, 0.08), rgba(78, 167, 255, 0.06)); box-shadow: 0 12px 28px rgba(8, 15, 29, 0.18);">
+            <p style="margin: 0; color: #eaf7ff; font-weight: 700; font-size: 1.18rem; letter-spacing: -0.02em;">
+              Key takeaways: the best pose-estimation system depends on what information the
+              application needs, where the model will run, and whether it must analyze one person
+              or several. For exercise analysis, pose estimation is only the first step: the
+              landmark coordinates still need to be converted into meaningful measurements such as
+              joint angles and movement states.
+            </p>
+          </div>
+        </section>
+      </article>
+    </main>
+  </body>
+</html>

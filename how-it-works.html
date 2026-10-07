@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="How it works: tutorial on real-time human pose estimation for exercise analysis."
+    />
+    <title>How It Works | Real-Time Human Pose Estimation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav container" aria-label="Main navigation">
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="how-it-works.html">How It Works</a>
+          <a href="systems.html">Systems</a>
+          <a href="comparison.html">Comparison</a>
+          <a href="exercise-analysis.html">Exercise Analysis</a>
+          <a href="challenges.html">Challenges</a>
+          <a href="future.html">Future</a>
+          <a href="bibliography.html">Bibliography</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container" style="padding: 4rem 0 5rem;">
+      <article aria-labelledby="page-title">
+        <header style="margin-bottom: 2rem;">
+          <h1 id="page-title" style="margin: 0; font-size: clamp(2.4rem, 4vw, 3.5rem); line-height: 1.1; letter-spacing: -0.05em;">
+            How Human Pose Estimation Works
+          </h1>
+          <p
+            style="margin-top: 1rem; max-width: 760px; color: #9cb0c8; font-size: 1.08rem;"
+          >
+            Pose estimation turns raw visual input into a structured description of the
+            human body, making it possible to describe movement through landmarks and
+            skeletal relationships instead of relying only on the raw pixels in an image.
+          </p>
+        </header>
+
+        <section class="page-audio" aria-label="Page overview audio">
+          <div class="audio-label">Listen to Page Overview</div>
+          <audio controls preload="none">
+            <source src="audio/How%20It%20Works.m4a" type="audio/mp4" />
+            Your browser does not support the audio element.
+          </audio>
+        </section>
+
+        <div
+          aria-label="Pose estimation processing pipeline"
+          style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.75rem; margin: 2.5rem 0 3rem; padding: 1.5rem; border: 1px solid rgba(148, 163, 184, 0.22); border-radius: 20px; background: rgba(17, 30, 44, 0.72);"
+        >
+          <div style="min-width: 110px; padding: 0.9rem 1rem; border-radius: 14px; background: rgba(105, 210, 231, 0.08); border: 1px solid rgba(105, 210, 231, 0.32); text-align: center; font-weight: 600; color: #eaf7ff;">Image / Video</div>
+          <span aria-hidden="true" style="font-size: 1.5rem; color: var(--accent);">→</span>
+          <div style="min-width: 150px; padding: 0.9rem 1rem; border-radius: 14px; background: rgba(105, 210, 231, 0.08); border: 1px solid rgba(105, 210, 231, 0.32); text-align: center; font-weight: 600; color: #eaf7ff;">Person Detection</div>
+          <span aria-hidden="true" style="font-size: 1.5rem; color: var(--accent);">→</span>
+          <div style="min-width: 150px; padding: 0.9rem 1rem; border-radius: 14px; background: rgba(105, 210, 231, 0.08); border: 1px solid rgba(105, 210, 231, 0.32); text-align: center; font-weight: 600; color: #eaf7ff;">Pose Estimation</div>
+          <span aria-hidden="true" style="font-size: 1.5rem; color: var(--accent);">→</span>
+          <div style="min-width: 150px; padding: 0.9rem 1rem; border-radius: 14px; background: rgba(105, 210, 231, 0.08); border: 1px solid rgba(105, 210, 231, 0.32); text-align: center; font-weight: 600; color: #eaf7ff;">Body Keypoints</div>
+          <span aria-hidden="true" style="font-size: 1.5rem; color: var(--accent);">→</span>
+          <div style="min-width: 190px; padding: 0.9rem 1rem; border-radius: 14px; background: rgba(105, 210, 231, 0.08); border: 1px solid rgba(105, 210, 231, 0.32); text-align: center; font-weight: 600; color: #eaf7ff;">Skeletal Representation</div>
+        </div>
+
+        <section aria-labelledby="what-is-human-pose-estimation" style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(148, 163, 184, 0.18);">
+          <h2 id="what-is-human-pose-estimation" style="margin: 0 0 1.25rem; font-size: clamp(1.7rem, 3vw, 2.3rem); letter-spacing: -0.04em;">What Is Human Pose Estimation?</h2>
+          <div style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 1.5rem; align-items: stretch;">
+            <div style="padding: 1.5rem; border: 1px solid rgba(148, 163, 184, 0.22); border-radius: 20px; background: rgba(17, 30, 44, 0.72); color: var(--muted);">
+              <p>
+                Human pose estimation (HPE) is a computer vision task for inferring the
+                position and configuration of the human body from images or video. Rather
+                than treating a person as one single object, pose-estimation systems identify
+                specific anatomical points—often called keypoints or landmarks—such as the
+                shoulders, elbows, hips, knees, and ankles.<a href="bibliography.html#ref1" aria-label="Reference 1">[1]</a>
+              </p>
+              <p>
+                These landmarks provide a simplified representation of a person’s pose. When
+                connected according to the body’s structure, they can form a skeletal model
+                that can be analyzed computationally. Pose-estimation systems may describe
+                landmarks in 2D image coordinates or estimate their positions in 3D space.
+              </p>
+              <p>
+                For exercise analysis, this representation is useful because movement can be
+                studied by tracking how landmarks change over time. Instead of analyzing every
+                pixel in a video directly, an application can use the relevant joints to
+                study movement patterns, joint angles, and exercise repetitions.
+              </p>
+            </div>
+            <figure style="margin: 0; padding: 1.25rem; border: 1px solid rgba(148, 163, 184, 0.22); border-radius: 20px; background: rgba(17, 30, 44, 0.72);">
+              <div style="display: grid; place-items: center; min-height: 220px; border-radius: 16px; border: 1px dashed rgba(105, 210, 231, 0.35); background: rgba(105, 210, 231, 0.04); color: #dfeefb;">
+                <div style="position: relative; width: 180px; height: 200px;">
+                  <div style="position: absolute; left: 50%; top: 10px; width: 24px; height: 24px; border-radius: 50%; background: #dff6ff; transform: translateX(-50%);"></div>
+                  <div style="position: absolute; left: 50%; top: 30px; width: 4px; height: 50px; background: #8ad7ff; transform: translateX(-50%);"></div>
+                  <div style="position: absolute; left: 50%; top: 80px; width: 4px; height: 76px; background: #8ad7ff; transform: translateX(-50%);"></div>
+                  <div style="position: absolute; left: 50%; top: 154px; width: 4px; height: 30px; background: #8ad7ff; transform: translateX(-50%);"></div>
+                  <div style="position: absolute; left: 35%; top: 82px; width: 52px; height: 4px; background: #8ad7ff; transform: rotate(18deg); border-radius: 999px;"></div>
+                  <div style="position: absolute; left: 52%; top: 82px; width: 52px; height: 4px; background: #8ad7ff; transform: rotate(-18deg); border-radius: 999px;"></div>
+                  <div style="position: absolute; left: 42%; top: 152px; width: 4px; height: 28px; background: #8ad7ff; transform: rotate(22deg);"></div>
+                  <div style="position: absolute; left: 54%; top: 152px; width: 4px; height: 28px; background: #8ad7ff; transform: rotate(-22deg);"></div>
+                  <div style="position: absolute; left: 50%; top: 70px; width: 8px; height: 8px; border-radius: 50%; background: #dff6ff; transform: translateX(-50%);"></div>
+                  <div style="position: absolute; left: 62%; top: 70px; width: 8px; height: 8px; border-radius: 50%; background: #dff6ff;"></div>
+                  <div style="position: absolute; left: 38%; top: 70px; width: 8px; height: 8px; border-radius: 50%; background: #dff6ff;"></div>
+                  <div style="position: absolute; left: 60%; top: 150px; width: 8px; height: 8px; border-radius: 50%; background: #dff6ff;"></div>
+                  <div style="position: absolute; left: 40%; top: 150px; width: 8px; height: 8px; border-radius: 50%; background: #dff6ff;"></div>
+                </div>
+              </div>
+            </figure>
+          </div>
+        </section>
+
+        <section aria-labelledby="keypoints-and-the-human-skeleton" style="margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid rgba(148, 163, 184, 0.18);">
+          <h2 id="keypoints-and-the-human-skeleton" style="margin: 0 0 1.25rem; font-size: clamp(1.7rem, 3vw, 2.3rem); letter-spacing: -0.04em;">Keypoints and the Human Skeleton</h2>
+          <div style="display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 1.5rem; align-items: stretch;">
+            <figure style="margin: 0; padding: 1.25rem; border: 1px solid rgba(148, 163, 184, 0.22); border-radius: 20px; background: rgba(17, 30, 44, 0.72);">
+              <div style="display: grid; place-items: center; min-height: 220px; border-radius: 16px; border: 1px dashed rgba(105, 210, 231, 0.35); color: #bfdaf3; text-align: center; background: rgba(105, 210, 231, 0.04);">
+                <div style="position: relative; width: 180px; height: 200px;">
+                  <div style="position: absolute; left: 48%; top: 0; width: 26px; height: 26px; border-radius: 50%; background: #dff6ff; box-shadow: 0 0 0 4px rgba(105, 210, 231, 0.25);"></div>
+                  <div style="position: absolute; left: 50%; top: 23px; width: 4px; height: 38px; background: #8ad7ff; transform: translateX(-50%);"></div>
+                  <div style="position: absolute; left: 50%; top: 60px; width: 4px; height: 62px; background: #8ad7ff; transform: translateX(-50%);"></div>
+                  <div style="position: absolute; left: 50%; top: 123px; width: 4px; height: 62px; background: #8ad7ff; transform: translateX(-50%);"></div>
+                  <div style="position: absolute; left: 36%; top: 76px; width: 56px; height: 4px; background: #8ad7ff; transform: rotate(18deg); transform-origin: center; border-radius: 999px;"></div>
+                  <div style="position: absolute; left: 42%; top: 76px; width: 56px; height: 4px; background: #8ad7ff; transform: rotate(-18deg); transform-origin: center; border-radius: 999px;"></div>
+                  <div style="position: absolute; left: 43%; top: 145px; width: 4px; height: 52px; background: #8ad7ff; transform: rotate(18deg);"></div>
+                  <div style="position: absolute; left: 53%; top: 145px; width: 4px; height: 52px; background: #8ad7ff; transform: rotate(-18deg);"></div>
+                  <div style="position: absolute; left: 34%; top: 60px; width: 8px; height: 8px; border-radius: 50%; background: #dff6ff;"></div>
+                  <div style="position: absolute; left: 58%; top: 60px; width: 8px; height: 8px; border-radius: 50%; background: #dff6ff;"></div>
+                  <div style="position: absolute; left: 62%; top: 118px; width: 8px; height: 8px; border-radius: 50%; background: #dff6ff;"></div>
+                  <div style="position: absolute; left: 32%; top: 118px; width: 8px; height: 8px; border-radius: 50%; background: #dff6ff;"></div>
+                  <div style="position: absolute; left: 42%; top: 175px; width: 8px; height: 8px; border-radius: 50%; background: #dff6ff;"></div>
+                  <div style="position: absolute; left: 58%; top: 175px; width: 8px; height: 8px; border-radius: 50%; background: #dff6ff;"></div>
+                </div>
+              </div>
+            </figure>
+            <div style="padding: 1.5rem; border: 1px solid rgba(148, 163, 184, 0.22); border-radius: 20px; background: rgba(17, 30, 44, 0.72); color: var(--muted);">
+              <p>
+                Pose-estimation systems represent the body using anatomical keypoints such as
+                the shoulders, elbows, wrists, hips, knees, and ankles. These landmarks encode
+                the positions of important joints and can be tracked over time to describe
+                movement.
+              </p>
+              <p>
+                When related keypoints are connected, the result is a skeletal representation.
+                For example, the hip → knee → ankle sequence defines a lower-limb segment that can
+                be analyzed to infer limb orientation and movement. These three points can later be
+                used to calculate knee angle during exercise, which helps us understand movement
+                phases in activities such as squats.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section aria-labelledby="2d-vs-3d-pose-estimation" style="margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid rgba(148, 163, 184, 0.18);">
+          <h2 id="2d-vs-3d-pose-estimation" style="margin: 0 0 1.25rem; font-size: clamp(1.7rem, 3vw, 2.3rem); letter-spacing: -0.04em;">2D vs. 3D Pose Estimation</h2>
+          <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem;">
+            <div style="padding: 1.5rem; border: 1px solid rgba(148, 163, 184, 0.22); border-radius: 20px; background: rgba(17, 30, 44, 0.72); color: var(--muted);">
+              <h3 style="margin-top: 0; color: #eaf7ff;">2D</h3>
+              <p>
+                2D pose estimation predicts landmark locations in image coordinates, typically as
+                x and y positions in the image plane.<a href="bibliography.html#ref1" aria-label="Reference 1">[1]</a>
+              </p>
+              <p>
+                This representation works well when the camera view is clear and the motion is easy
+                to see. However, it does not capture depth, so two poses with different spatial
+                arrangements can look similar when projected onto the image plane.
+              </p>
+            </div>
+            <div style="padding: 1.5rem; border: 1px solid rgba(148, 163, 184, 0.22); border-radius: 20px; background: rgba(17, 30, 44, 0.72); color: var(--muted);">
+              <h3 style="margin-top: 0; color: #eaf7ff;">3D</h3>
+              <p>
+                3D pose estimation extends the problem by estimating the spatial position of
+                landmarks in three-dimensional space, often including depth information.<a href="bibliography.html#ref1" aria-label="Reference 1">[1]</a>
+              </p>
+              <p>
+                This richer representation gives a more complete view of movement in space, but it
+                also adds complexity because the model must estimate depth and account for perspective.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section aria-labelledby="from-an-image-to-a-pose" style="margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid rgba(148, 163, 184, 0.18);">
+          <h2 id="from-an-image-to-a-pose" style="margin: 0 0 1.25rem; font-size: clamp(1.7rem, 3vw, 2.3rem); letter-spacing: -0.04em;">From an Image to a Pose</h2>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: stretch;">
+            <figure style="margin: 0; padding: 1.25rem; border: 1px solid rgba(148, 163, 184, 0.22); border-radius: 20px; background: rgba(17, 30, 44, 0.72);">
+              <div style="display: grid; place-items: center; min-height: 220px; border-radius: 16px; border: 1px dashed rgba(105, 210, 231, 0.35); background: rgba(105, 210, 231, 0.04); color: #dfeefb;">
+                <div style="display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; max-width: 380px;">
+                  <div style="width: 92px; height: 58px; border-radius: 12px; background: rgba(105, 210, 231, 0.08); border: 1px solid rgba(105, 210, 231, 0.3); display: grid; place-items: center; font-size: 0.8rem; font-weight: 600; text-align: center; padding: 0.5rem;">Image</div>
+                  <span aria-hidden="true" style="color: var(--accent); font-size: 1.5rem;">→</span>
+                  <div style="width: 86px; height: 58px; border-radius: 12px; background: rgba(105, 210, 231, 0.08); border: 1px solid rgba(105, 210, 231, 0.3); display: grid; place-items: center; font-size: 0.8rem; font-weight: 600; text-align: center; padding: 0.5rem;">Keypoints</div>
+                  <span aria-hidden="true" style="color: var(--accent); font-size: 1.5rem;">→</span>
+                  <div style="width: 92px; height: 58px; border-radius: 12px; background: rgba(105, 210, 231, 0.08); border: 1px solid rgba(105, 210, 231, 0.3); display: grid; place-items: center; font-size: 0.8rem; font-weight: 600; text-align: center; padding: 0.5rem;">Skeleton</div>
+                </div>
+              </div>
+            </figure>
+            <div style="padding: 1.5rem; border: 1px solid rgba(148, 163, 184, 0.22); border-radius: 20px; background: rgba(17, 30, 44, 0.72); color: var(--muted);">
+              <p>
+                The conceptual pipeline begins with a camera image or frame. A pose-estimation
+                system first identifies the person in the scene and then estimates the positions
+                of individual body landmarks. This is different from ordinary object detection,
+                which may return only a bounding box around the person.
+              </p>
+              <p>
+                A pose-estimation model outputs the locations of keypoints such as the shoulders,
+                elbows, wrists, hips, knees, and ankles. These landmarks are then connected into
+                a skeletal representation that describes the pose more precisely than a simple box
+                or object label.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section aria-labelledby="from-images-to-real-time-video" style="margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid rgba(148, 163, 184, 0.18);">
+          <h2 id="from-images-to-real-time-video" style="margin: 0 0 1.25rem; font-size: clamp(1.7rem, 3vw, 2.3rem); letter-spacing: -0.04em;">From Images to Real-Time Video</h2>
+          <div style="display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 1.5rem; align-items: stretch;">
+            <div style="padding: 1.5rem; border: 1px solid rgba(148, 163, 184, 0.22); border-radius: 20px; background: rgba(17, 30, 44, 0.72); color: var(--muted);">
+              <p>
+                Video is a sequence of frames, and real-time pose systems repeatedly estimate or track landmarks as each new frame arrives. Because consecutive frames are temporally related, a system can often use previous detections or motion estimates to reduce the need for a complete detection pass on every frame.
+              </p>
+              <p>
+                This temporal continuity is important for exercise analysis, where movement evolves gradually over time and the same body landmarks should remain associated across adjacent frames.
+              </p>
+            </div>
+            <figure style="margin: 0; padding: 1.25rem; border: 1px solid rgba(148, 163, 184, 0.22); border-radius: 20px; background: rgba(17, 30, 44, 0.72);">
+              <div style="display: grid; place-items: center; min-height: 220px; border-radius: 16px; border: 1px dashed rgba(105, 210, 231, 0.35); background: rgba(105, 210, 231, 0.04); color: #dfeefb;">
+                <div style="display: flex; align-items: flex-end; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                  <div style="display: flex; flex-direction: column; align-items: center; gap: 0.4rem;">
+                    <div style="position: relative; width: 90px; height: 120px;">
+                      <div style="position: absolute; left: 50%; top: 0; width: 15px; height: 15px; border-radius: 50%; background: #dff6ff; transform: translateX(-50%);"></div>
+                      <div style="position: absolute; left: 50%; top: 15px; width: 3px; height: 24px; background: #8ad7ff; transform: translateX(-50%);"></div>
+                      <div style="position: absolute; left: 50%; top: 39px; width: 3px; height: 34px; background: #8ad7ff; transform: translateX(-50%);"></div>
+                      <div style="position: absolute; left: 50%; top: 73px; width: 3px; height: 28px; background: #8ad7ff; transform: translateX(-50%);"></div>
+                      <div style="position: absolute; left: 34%; top: 45px; width: 22px; height: 3px; background: #8ad7ff; transform: rotate(14deg); border-radius: 999px;"></div>
+                      <div style="position: absolute; left: 54%; top: 45px; width: 22px; height: 3px; background: #8ad7ff; transform: rotate(-14deg); border-radius: 999px;"></div>
+                      <div style="position: absolute; left: 42%; top: 72px; width: 3px; height: 22px; background: #8ad7ff; transform: rotate(12deg);"></div>
+                      <div style="position: absolute; left: 58%; top: 72px; width: 3px; height: 22px; background: #8ad7ff; transform: rotate(-12deg);"></div>
+                    </div>
+                    <div style="font-size: 0.72rem; color: #eaf7ff;">Frame 1</div>
+                  </div>
+                  <div style="display: flex; flex-direction: column; align-items: center; gap: 0.4rem;">
+                    <div style="position: relative; width: 90px; height: 120px;">
+                      <div style="position: absolute; left: 50%; top: 10px; width: 15px; height: 15px; border-radius: 50%; background: #dff6ff; transform: translateX(-50%);"></div>
+                      <div style="position: absolute; left: 50%; top: 25px; width: 3px; height: 22px; background: #8ad7ff; transform: translateX(-50%);"></div>
+                      <div style="position: absolute; left: 50%; top: 47px; width: 3px; height: 24px; background: #8ad7ff; transform: translateX(-50%);"></div>
+                      <div style="position: absolute; left: 50%; top: 71px; width: 3px; height: 18px; background: #8ad7ff; transform: translateX(-50%);"></div>
+                      <div style="position: absolute; left: 38%; top: 57px; width: 20px; height: 3px; background: #8ad7ff; transform: rotate(28deg); border-radius: 999px;"></div>
+                      <div style="position: absolute; left: 52%; top: 57px; width: 20px; height: 3px; background: #8ad7ff; transform: rotate(-28deg); border-radius: 999px;"></div>
+                      <div style="position: absolute; left: 42%; top: 72px; width: 3px; height: 22px; background: #8ad7ff; transform: rotate(30deg);"></div>
+                      <div style="position: absolute; left: 58%; top: 72px; width: 3px; height: 22px; background: #8ad7ff; transform: rotate(-30deg);"></div>
+                    </div>
+                    <div style="font-size: 0.72rem; color: #eaf7ff;">Frame 2</div>
+                  </div>
+                  <div style="display: flex; flex-direction: column; align-items: center; gap: 0.4rem;">
+                    <div style="position: relative; width: 90px; height: 120px;">
+                      <div style="position: absolute; left: 50%; top: 16px; width: 15px; height: 15px; border-radius: 50%; background: #dff6ff; transform: translateX(-50%);"></div>
+                      <div style="position: absolute; left: 50%; top: 31px; width: 3px; height: 20px; background: #8ad7ff; transform: translateX(-50%);"></div>
+                      <div style="position: absolute; left: 50%; top: 51px; width: 3px; height: 20px; background: #8ad7ff; transform: translateX(-50%);"></div>
+                      <div style="position: absolute; left: 50%; top: 70px; width: 3px; height: 14px; background: #8ad7ff; transform: translateX(-50%);"></div>
+                      <div style="position: absolute; left: 39%; top: 61px; width: 18px; height: 3px; background: #8ad7ff; transform: rotate(34deg); border-radius: 999px;"></div>
+                      <div style="position: absolute; left: 53%; top: 61px; width: 18px; height: 3px; background: #8ad7ff; transform: rotate(-34deg); border-radius: 999px;"></div>
+                      <div style="position: absolute; left: 44%; top: 79px; width: 3px; height: 18px; background: #8ad7ff; transform: rotate(38deg);"></div>
+                      <div style="position: absolute; left: 56%; top: 79px; width: 3px; height: 18px; background: #8ad7ff; transform: rotate(-38deg);"></div>
+                    </div>
+                    <div style="font-size: 0.72rem; color: #eaf7ff;">Frame 3</div>
+                  </div>
+                </div>
+                <div style="margin-top: 0.9rem; color: #eaf7ff; font-weight: 600; letter-spacing: 0.04em;">Frame 1 → Frame 2 → Frame 3</div>
+              </div>
+            </figure>
+          </div>
+        </section>
+
+        <section aria-labelledby="why-this-matters-for-exercise-analysis" style="margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid rgba(148, 163, 184, 0.18);">
+          <h2 id="why-this-matters-for-exercise-analysis" style="margin: 0 0 1.25rem; font-size: clamp(1.7rem, 3vw, 2.3rem); letter-spacing: -0.04em;">Why This Matters for Exercise Analysis</h2>
+          <div style="display: grid; grid-template-columns: 1fr; gap: 1.5rem;">
+            <div style="padding: 1.5rem; border: 1px solid rgba(148, 163, 184, 0.22); border-radius: 20px; background: rgba(17, 30, 44, 0.72); color: var(--muted);">
+              <p>
+                Pose landmarks become useful for exercise analysis when their positions are measured over time. For example, during a squat, the hip, knee, and ankle landmarks can be used to calculate the knee angle and track how the joint changes through the movement cycle.
+              </p>
+              <p>
+                Changes in joint angles can help identify movement phases, estimate repetition counts, or assess movement technique. In this workflow, the pose-estimation model provides the landmarks, while additional application logic interprets those coordinates to support exercise analysis.
+              </p>
+            </div>
+          </div>
+        </section>
+      </article>
+    </main>
+  </body>
+</html>

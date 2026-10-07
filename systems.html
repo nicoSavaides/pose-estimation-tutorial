@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Systems overview for the tutorial on real-time human pose estimation."
+    />
+    <title>Systems | Real-Time Human Pose Estimation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav container" aria-label="Main navigation">
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="how-it-works.html">How It Works</a>
+          <a href="systems.html">Systems</a>
+          <a href="comparison.html">Comparison</a>
+          <a href="exercise-analysis.html">Exercise Analysis</a>
+          <a href="challenges.html">Challenges</a>
+          <a href="future.html">Future</a>
+          <a href="bibliography.html">Bibliography</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container" style="padding: 4rem 0 5rem;">
+      <article aria-labelledby="page-title">
+        <header style="margin-bottom: 2rem;">
+          <h1 id="page-title" style="margin: 0; font-size: clamp(2.4rem, 4vw, 3.5rem); line-height: 1.1; letter-spacing: -0.05em;">
+            Modern Pose-Estimation Systems
+          </h1>
+        </header>
+
+        <section class="page-audio" aria-label="Page overview audio">
+          <div class="audio-label">Listen to Page Overview</div>
+          <audio controls preload="none">
+            <source src="audio/Systems.m4a" type="audio/mp4" />
+            Your browser does not support the audio element.
+          </audio>
+        </section>
+
+        <section aria-labelledby="intro" style="margin-bottom: 2.5rem;">
+          <div style="padding: 1.8rem; border: 1px solid rgba(148, 163, 184, 0.22); border-radius: 20px; background: rgba(17, 30, 44, 0.72); color: var(--muted);">
+            <p id="intro" style="margin: 0;">
+              Human pose estimation can be implemented with different model architectures and
+              landmark definitions. This tutorial looks at MediaPipe / BlazePose, Ultralytics
+              YOLO Pose, and OpenPose as representative systems that show how pose estimation is
+              approached in practice.
+            </p>
+          </div>
+        </section>
+
+        <section aria-labelledby="blazepose" style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(148, 163, 184, 0.18);">
+          <h2 id="blazepose" style="margin: 0 0 1.25rem; font-size: clamp(1.7rem, 3vw, 2.3rem); letter-spacing: -0.04em;">MediaPipe / BlazePose</h2>
+          <div style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 1.5rem; align-items: stretch;">
+            <div style="padding: 1.5rem; border: 1px solid rgba(148, 163, 184, 0.22); border-radius: 20px; background: rgba(17, 30, 44, 0.72); color: var(--muted);">
+              <p>
+                BlazePose GHUM Holistic is a lightweight neural-network pipeline designed for
+                real-time, on-device 3D human landmark and pose estimation from RGB imagery.<a href="bibliography.html#ref2" aria-label="Reference 2">[2]</a>
+              </p>
+              <p>
+                These features are useful for fitness tracking and similar applications because the
+                system is designed for live interaction without expensive external hardware. It
+                produces a compact set of body landmarks that can describe movement continuously
+                over time.
+              </p>
+              <p>
+                MediaPipe’s pose landmark representation includes 33 body landmarks, covering the
+                shoulders, elbows, wrists, hips, knees, ankles, heels, and foot landmarks.<a href="bibliography.html#ref2" aria-label="Reference 2">[2]</a>
+              </p>
+            </div>
+            <figure style="margin: 0; padding: 1.25rem; border: 1px solid rgba(148, 163, 184, 0.22); border-radius: 20px; background: rgba(17, 30, 44, 0.72);">
+              <div style="display: grid; place-items: center; min-height: 260px; border-radius: 18px; border: 1px dashed rgba(105, 210, 231, 0.35); background: rgba(105, 210, 231, 0.04); color: #dfeefb;">
+                <div style="position: relative; width: 180px; height: 210px;">
+                  <div style="position: absolute; left: 50%; top: 8px; width: 26px; height: 26px; border-radius: 50%; background: #dff6ff; transform: translateX(-50%);"></div>
+                  <div style="position: absolute; left: 50%; top: 28px; width: 4px; height: 38px; background: #8ad7ff; transform: translateX(-50%);"></div>
+                  <div style="position: absolute; left: 50%; top: 64px; width: 4px; height: 72px; background: #8ad7ff; transform: translateX(-50%);"></div>
+                  <div style="position: absolute; left: 50%; top: 132px; width: 4px; height: 64px; background: #8ad7ff; transform: translateX(-50%);"></div>
+                  <div style="position: absolute; left: 28%; top: 78px; width: 60px; height: 4px; background: #8ad7ff; transform: rotate(18deg); transform-origin: center; border-radius: 999px;"></div>
+                  <div style="position: absolute; left: 52%; top: 78px; width: 60px; height: 4px; background: #8ad7ff; transform: rotate(-18deg); transform-origin: center; border-radius: 999px;"></div>
+                  <div style="position: absolute; left: 42%; top: 150px; width: 4px; height: 52px; background: #8ad7ff; transform: rotate(18deg);"></div>
+                  <div style="position: absolute; left: 54%; top: 150px; width: 4px; height: 52px; background: #8ad7ff; transform: rotate(-18deg);"></div>
+                  <div style="position: absolute; left: 31%; top: 76px; width: 8px; height: 8px; border-radius: 50%; background: #dff6ff;"></div>
+                  <div style="position: absolute; left: 61%; top: 76px; width: 8px; height: 8px; border-radius: 50%; background: #dff6ff;"></div>
+                  <div style="position: absolute; left: 38%; top: 120px; width: 8px; height: 8px; border-radius: 50%; background: #dff6ff;"></div>
+                  <div style="position: absolute; left: 62%; top: 120px; width: 8px; height: 8px; border-radius: 50%; background: #dff6ff;"></div>
+                  <div style="position: absolute; left: 42%; top: 194px; width: 8px; height: 8px; border-radius: 50%; background: #dff6ff;"></div>
+                  <div style="position: absolute; left: 58%; top: 194px; width: 8px; height: 8px; border-radius: 50%; background: #dff6ff;"></div>
+                </div>
+              </div>
+            </figure>
+          </div>
+        </section>
+
+        <section aria-labelledby="yolopose" style="margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid rgba(148, 163, 184, 0.18);">
+          <h2 id="yolopose" style="margin: 0 0 1.25rem; font-size: clamp(1.7rem, 3vw, 2.3rem); letter-spacing: -0.04em;">Ultralytics YOLO Pose</h2>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: stretch;">
+            <div style="padding: 1.5rem; border: 1px solid rgba(148, 163, 184, 0.22); border-radius: 20px; background: rgba(17, 30, 44, 0.72); color: var(--muted);">
+              <p>
+                YOLO Pose extends the YOLO ecosystem to pose estimation and produces detected
+                instances together with body keypoints.<a href="bibliography.html#ref3" aria-label="Reference 3">[3]</a>
+              </p>
+              <p>
+                The standard human pose models use the COCO keypoint representation, which
+                contains 17 landmarks including the nose, shoulders, elbows, wrists, hips,
+                knees, and ankles.
+              </p>
+              <p>
+                Prediction results include keypoint coordinates in pixel and normalized space,
+                along with visibility or confidence information when it is available.<a href="bibliography.html#ref3" aria-label="Reference 3">[3]</a>
+              </p>
+            </div>
+            <figure style="margin: 0; padding: 1.5rem; border: 1px solid rgba(148, 163, 184, 0.22); border-radius: 20px; background: rgba(17, 30, 44, 0.72);">
+              <pre style="margin: 0; white-space: pre-wrap; color: #dfeefb; font-family: Consolas, 'SFMono-Regular', monospace; font-size: 0.92rem; line-height: 1.7;">Person
+├── Bounding Box
+└── Keypoints
+    ├── Left Hip (x, y)
+    ├── Left Knee (x, y)
+    └── Left Ankle (x, y)</pre>
+            </figure>
+          </div>
+        </section>
+
+        <section aria-labelledby="openpose" style="margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid rgba(148, 163, 184, 0.18);">
+          <h2 id="openpose" style="margin: 0 0 1.25rem; font-size: clamp(1.7rem, 3vw, 2.3rem); letter-spacing: -0.04em;">OpenPose</h2>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: stretch;">
+            <div style="padding: 1.5rem; border: 1px solid rgba(148, 163, 184, 0.22); border-radius: 20px; background: rgba(17, 30, 44, 0.72); color: var(--muted);">
+              <p>
+                OpenPose is an influential real-time multi-person 2D pose-estimation approach.<a href="bibliography.html#ref4" aria-label="Reference 4">[4]</a>
+              </p>
+              <p>
+                In a simple technical description, its bottom-up strategy detects body-part
+                candidates and uses Part Affinity Fields (PAFs) to encode associations among
+                body parts. Instead of processing each person independently, the method infers
+                how detected parts belong together and then assembles them into full human pose
+                structures.
+              </p>
+              <p>
+                Multi-person scenes add a challenge: the system must decide which detected knee,
+                elbow, wrist, and other keypoint belongs to which person.
+              </p>
+            </div>
+            <figure style="margin: 0; padding: 1.5rem; border: 1px solid rgba(148, 163, 184, 0.22); border-radius: 20px; background: rgba(17, 30, 44, 0.72);">
+              <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.7rem; min-height: 220px; color: #dfeefb; text-align: center;">
+                <span style="padding: 0.7rem 0.9rem; border-radius: 10px; background: rgba(105, 210, 231, 0.09); border: 1px solid rgba(105, 210, 231, 0.3);">Image</span>
+                <span aria-hidden="true" style="color: var(--accent); font-size: 1.4rem;">→</span>
+                <span style="padding: 0.7rem 0.9rem; border-radius: 10px; background: rgba(105, 210, 231, 0.09); border: 1px solid rgba(105, 210, 231, 0.3);">Body-Part Candidates</span>
+                <span aria-hidden="true" style="color: var(--accent); font-size: 1.4rem;">→</span>
+                <span style="padding: 0.7rem 0.9rem; border-radius: 10px; background: rgba(105, 210, 231, 0.09); border: 1px solid rgba(105, 210, 231, 0.3);">PAFs</span>
+                <span aria-hidden="true" style="color: var(--accent); font-size: 1.4rem;">→</span>
+                <span style="padding: 0.7rem 0.9rem; border-radius: 10px; background: rgba(105, 210, 231, 0.09); border: 1px solid rgba(105, 210, 231, 0.3);">Part Association</span>
+                <span aria-hidden="true" style="color: var(--accent); font-size: 1.4rem;">→</span>
+                <span style="padding: 0.7rem 0.9rem; border-radius: 10px; background: rgba(105, 210, 231, 0.09); border: 1px solid rgba(105, 210, 231, 0.3);">Human Skeletons</span>
+              </div>
+            </figure>
+          </div>
+        </section>
+
+        <section aria-labelledby="different-approaches-same-goal" style="margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid rgba(148, 163, 184, 0.18);">
+          <h2 id="different-approaches-same-goal" style="margin: 0 0 1.25rem; font-size: clamp(1.7rem, 3vw, 2.3rem); letter-spacing: -0.04em;">Different Approaches, Same Goal</h2>
+          <div style="padding: 1.5rem; border: 1px solid rgba(148, 163, 184, 0.22); border-radius: 20px; background: rgba(17, 30, 44, 0.72); color: var(--muted);">
+            <p>
+              All three systems represent body position, but they differ in architecture,
+              landmark definitions, dimensionality, multi-person handling, and deployment
+              priorities. BlazePose emphasizes lightweight, on-device estimation for real-time
+              applications; YOLO Pose fits naturally into a detection-oriented pipeline and
+              exposes keypoint coordinates with associated metadata; OpenPose is a widely
+              discussed multi-person approach that assembles bodies from detected body-part
+              candidates and associations.
+            </p>
+            <p style="margin-bottom: 0;">
+              The best choice depends on the application. For exercise analysis, the next
+              chapter compares how these approaches support real-time tracking, movement
+              interpretation, and practical deployment choices.
+            </p>
+          </div>
+        </section>
+      </article>
+    </main>
+  </body>
+</html>
